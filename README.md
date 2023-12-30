@@ -4,6 +4,8 @@ Nama: Elan Cahya Niswary
 
 NIM: 202010370311164
 
+Kelas: Machine Learning C
+
 Model yang digunakan untuk Training pada dataset RPS yaitu EfficientNetB0.
 
 Tampilan dari aplikasi:
