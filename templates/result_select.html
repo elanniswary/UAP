@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Your other head content here -->
+    <style>
+        /* CSS Styling */
+        body {
+            background-color: #F0F0F0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            animation: fadeInAnimation ease-in 1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .contact-section {
+            padding-bottom: 50px;
+        }
+
+        .title-box {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .sec-title {
+            font-weight: bold;
+            font-size: 30px;
+            color: #333;
+            margin: 0;
+        }
+
+        .content-column {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .prediction-info {
+            margin: 0;
+            font-weight: bold;
+            font-size: 24px;
+            color: #4CAF50;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            animation: fadeInAnimation ease-in 1s;
+            animation-fill-mode: forwards;
+        }
+
+        .accuracy-time {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+            animation: fadeInAnimation ease-in 1s;
+            animation-fill-mode: forwards;
+        }
+
+        .sidebar-column {
+            padding: 20px;
+        }
+
+        .sidebar-content {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .input-image {
+            height: 300px;
+            width: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 5px solid #4CAF50;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <section class="contact-section" id="result">
+        <div class="container">
+            <div class="title-box centered">
+                <div class="sec-title">Prediction Result</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12 content-column">
+                    <div class="inner-content">
+                        <div class="contact-form-area">
+                            <p class="prediction-info">Predicted Label is: {{ labels[pred] }}</p>
+                            <p class="accuracy-time">
+                                Accuracy: {{ (probs|max) }}% | Prediction Time: {{ (run_time) }} second
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 sidebar-column">
+                    <div class="sidebar-content">
+                        <img src="{{ url_for('static', filename='temp.jpg') }}" alt="Input Image" class="input-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
