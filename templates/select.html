@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Your other head content here -->
+    <style>
+        /* CSS Styling */
+        body {
+            background-color: #f4f4f4;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sec-title {
+            font-weight: bold;
+            font-size: 30px;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .upload-form {
+            width: 60%;
+            margin: auto;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        .image-preview {
+            border: 2px dashed #ccc;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .image-preview:hover {
+            border-color: #4CAF50;
+        }
+
+        .upload-btn input[type="file"] {
+            display: none;
+        }
+
+        .upload-btn label {
+            display: block;
+            width: 150px;
+            margin: auto;
+            margin-bottom: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .upload-btn label:hover {
+            background-color: #45a049;
+        }
+
+        .submit-btn input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .submit-btn input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="upload-form">
+        <div class="title-box centered">
+            <div class="sec-title"><b>Upload an Image to Make a Prediction</b></div>
+        </div>
+        <div class="image-preview" id="image-preview"></div>
+        <form action="/predict" method="post" enctype="multipart/form-data" class="upload-btn">
+            <label for="file-input">Select Image</label>
+            <input type="file" id="file-input" name="file" accept="image/jpeg, image/png" onchange="previewImage(event)">
+            <div class="submit-btn">
+                <input type="submit" value="Execute">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript for image preview
+        function previewImage(event) {
+            var preview = document.getElementById('image-preview');
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                preview.style.backgroundImage = "url('" + reader.result + "')";
+                preview.style.animation = "fadeIn 0.3s ease-in-out";
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.backgroundImage = null;
+            }
+        }
+    </script>
+</body>
+</html>
