@@ -1,6 +1,7 @@
 # UAP
 
 Nama: Elan Cahya Niswary
+
 NIM: 202010370311164
 
 Model yang digunakan untuk Training pada dataset RPS yaitu EfficientNetB0.
